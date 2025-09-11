@@ -1,0 +1,113 @@
+---
+
+## 2. Polymorphism
+
+### Definition
+
+Polymorphism is the ability of an object to take many forms. In Java, it allows a **single method or object** to behave differently in different contexts.
+
+Polymorphism in Java is of **two types**:
+
+1. **Compile-time polymorphism (Method Overloading)**
+2. **Run-time polymorphism (Method Overriding)**
+
+---
+
+### 1. **Compile-time Polymorphism (Method Overloading)**
+
+Occurs when **multiple methods have the same name** but **different parameters** in the same class.
+
+```java
+class Calculator {
+    int add(int a, int b) {
+        return a + b;
+    }
+
+    double add(double a, double b) {
+        return a + b;
+    }
+}
+
+public class MethodOverloading {
+    public static void main(String[] args) {
+        Calculator calc = new Calculator();
+        System.out.println(calc.add(5, 10));     // calls int version
+        System.out.println(calc.add(5.5, 10.5)); // calls double version
+    }
+}
+```
+
+**Output:**
+
+```
+15
+16.0
+```
+
+**Key Points:**
+
+* Methods must have **same name but different parameters** (type, number, or order).
+* Return type alone cannot be used for overloading.
+* Determined at **compile-time**, hence called compile-time polymorphism.
+
+---
+
+### 2. **Run-time Polymorphism (Method Overriding)**
+
+Occurs when a **subclass provides its own implementation** of a method that is already defined in the superclass.
+
+```java
+class Animal {
+    void sound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+class Cat extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Cat meows");
+    }
+}
+
+public class MethodOverriding {
+    public static void main(String[] args) {
+        Animal a1 = new Dog();
+        Animal a2 = new Cat();
+        a1.sound(); // calls Dog's version
+        a2.sound(); // calls Cat's version
+    }
+}
+```
+
+**Output:**
+
+```
+Dog barks
+Cat meows
+```
+
+**Key Points:**
+
+* Method overriding is determined at **run-time**, hence called **run-time polymorphism**.
+* Requires **inheritance**.
+* The overridden method must have the **same signature** in both parent and child.
+* Optional use of **`@Override` annotation** ensures correctness.
+
+---
+
+### Use of Polymorphism
+
+* Allows **code reusability**.
+* Enables **dynamic behavior** at run-time.
+* Makes programs **flexible and maintainable**.
+* Helps implement **real-world relationships** (e.g., a single `Animal` reference can point to `Dog`, `Cat`, etc.).
+
+---
