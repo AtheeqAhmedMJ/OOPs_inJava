@@ -1,0 +1,111 @@
+## 3. Abstraction
+
+### Definition
+
+Abstraction is the **process of hiding implementation details** and showing only the **essential features** of an object. In Java, it allows a programmer to focus on **what an object does** rather than **how it does it**.
+
+Abstraction in Java can be implemented using:
+
+1. **Abstract Classes**  
+2. **Interfaces**
+
+---
+
+### 1. **Using Abstract Classes**
+
+Occurs when a **class is declared as `abstract`** and contains **abstract methods** (without body) that must be **overridden by subclasses**.
+
+```java
+abstract class Shape {
+    abstract void draw(); // abstract method
+
+    void info() { // concrete method
+        System.out.println("This is a shape.");
+    }
+}
+
+class Circle extends Shape {
+    @Override
+    void draw() {
+        System.out.println("Drawing a Circle");
+    }
+}
+
+public class AbstractClassExample {
+    public static void main(String[] args) {
+        Shape s = new Circle();
+        s.draw();  // calls Circle's implementation
+        s.info();  // calls Shape's concrete method
+    }
+}
+````
+
+**Output:**
+
+```
+Drawing a Circle
+This is a shape.
+```
+
+**Key Points:**
+
+* Abstract methods **have no body**; concrete methods may exist.
+* Forces subclasses to provide their **own implementation**.
+* Can have **constructors, data members, and methods**.
+
+---
+
+### 2. **Using Interfaces**
+
+Occurs when a **class implements an interface**, which is a **completely abstract blueprint** with **abstract methods**.
+
+```java
+interface Animal {
+    void sound(); // abstract method
+}
+
+class Dog implements Animal {
+    public void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+class Cat implements Animal {
+    public void sound() {
+        System.out.println("Cat meows");
+    }
+}
+
+public class InterfaceExample {
+    public static void main(String[] args) {
+        Animal a1 = new Dog();
+        Animal a2 = new Cat();
+        a1.sound(); // calls Dog's version
+        a2.sound(); // calls Cat's version
+    }
+}
+```
+
+**Output:**
+
+```
+Dog barks
+Cat meows
+```
+
+**Key Points:**
+
+* Interfaces are **100% abstract** (all methods abstract, unless default/static).
+* A class can **implement multiple interfaces** (supports multiple inheritance).
+* Forces the implementing class to define all methods.
+
+---
+
+### Use of Abstraction
+
+* **Hides complexity** and exposes only the required functionality.
+* Provides a **blueprint for subclasses**.
+* Helps in **code reusability and maintainability**.
+* Allows **programmers to focus on “what” instead of “how”**.
+
+```
