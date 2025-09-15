@@ -1,0 +1,87 @@
+Let's continue learning the final pillars of Object-Oriented Programming (OOP).
+
+## 4. Encapsulation
+
+### Definition
+
+Encapsulation is the **process of wrapping data (variables)** and **methods (functions)** together into a single unit (class) and restricting direct access to some components.
+It is used to **protect data** from unauthorized access and modification.
+
+In Java, encapsulation is achieved by:
+
+* Declaring **variables as `private`** (cannot be accessed directly).
+* Providing **public getter and setter methods** to read and modify those variables safely.
+
+---
+
+### Example
+
+```java
+class Student {
+    // Private data member
+    private String name;
+    private int age;
+
+    // Public getter method
+    public String getName() {
+        return name;
+    }
+
+    // Public setter method
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        // Adding some validation
+        if (age > 0) {
+            this.age = age;
+        } else {
+            System.out.println("Age must be positive!");
+        }
+    }
+}
+
+public class EncapsulationDemo {
+    public static void main(String[] args) {
+        Student s = new Student();
+        s.setName("John");
+        s.setAge(18);
+
+        System.out.println("Student Name: " + s.getName());
+        System.out.println("Student Age: " + s.getAge());
+    }
+}
+```
+
+**Output:**
+
+```
+Student Name: John
+Student Age: 18
+```
+
+---
+
+### Key Points
+
+* **Private variables** ensure data hiding — they cannot be accessed directly from outside the class.
+* **Public getters and setters** provide controlled access to the variables.
+* We can add **validation logic** in setters to protect data integrity.
+
+---
+
+### Use of Encapsulation
+
+* **Data Hiding:** Prevents direct modification of sensitive data.
+* **Controlled Access:** You decide how data is read/written (using getters/setters).
+* **Maintainability:** If variable names or logic change internally, external code doesn’t break.
+* **Security:** Keeps class variables safe from unintended access or misuse.
+
+---
+
+Would you like me to also give a **real-world analogy** (like how encapsulation is like a capsule or a bank ATM) — this helps a lot in ICSE/board theory answers?
